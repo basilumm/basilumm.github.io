@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
@@ -751,10 +751,10 @@
       <div class="contact-big">CLEARED FOR<br><span>TAKEOFF.</span></div>
       <p class="contact-sub">Open to internships, placements, and challenging engineering projects. Let's build something together.</p>
       <div class="contact-row">
-        <a href="mailto:mihail.bazilov@gmail.com" class="btn btn-blue">
+        <button onclick="copyEmail(this)" class="btn btn-blue" style="cursor:pointer;border:none;">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-          Email Me
-        </a>
+          <span id="emailBtnText">mihail.bazilov@gmail.com</span>
+        </button>
         <a href="https://www.linkedin.com/in/m-bazilovs/" target="_blank" class="btn btn-outline">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 014 0v4M12 10v7"/></svg>
           LinkedIn
@@ -963,6 +963,15 @@
     });
   }, { threshold: 0.35 });
   sections.forEach(s => navObs.observe(s));
+
+  /* ── Copy email ── */
+  function copyEmail(btn) {
+    navigator.clipboard.writeText('mihail.bazilov@gmail.com').then(() => {
+      const span = document.getElementById('emailBtnText');
+      span.textContent = 'Copied to clipboard!';
+      setTimeout(() => { span.textContent = 'mihail.bazilov@gmail.com'; }, 2000);
+    });
+  }
 
   /* ── Modal ── */
   const projects = [
