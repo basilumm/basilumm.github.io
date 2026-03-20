@@ -274,21 +274,23 @@
     .modal-title { font-family:'Bebas Neue',sans-serif; font-size:2.2rem; letter-spacing:0.03em; line-height:1.05; color:var(--white); }
     .modal-close { background:none; border:1px solid var(--grey2); color:var(--grey); width:36px; height:36px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:1rem; flex-shrink:0; transition:all 0.2s; }
     .modal-close:hover { border-color:var(--white); color:var(--white); }
-    /* Project detail image carousel */
-    .modal-img-slot { width:100%; height:280px; background:var(--panel); display:flex; align-items:center; justify-content:center; overflow:hidden; position:relative; }
-    .modal-img-slot img { width:100%; height:100%; object-fit:cover; display:block; }
+    /* Project detail image grid */
+    .modal-img-slot { width:100%; background:var(--panel); overflow:hidden; position:relative; min-height:320px; }
+    .modal-img-slot.empty { display:flex; align-items:center; justify-content:center; }
     .modal-img-placeholder { display:flex; flex-direction:column; align-items:center; gap:0.8rem; color:var(--grey2); }
     .modal-img-placeholder span { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; }
-    .modal-carousel { width:100%; height:100%; position:relative; overflow:hidden; }
-    .modal-carousel-track { display:flex; height:100%; transition:transform 0.35s cubic-bezier(0.4,0,0.2,1); }
-    .modal-carousel-track img { min-width:100%; height:100%; object-fit:cover; flex-shrink:0; }
-    .carousel-btn { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.55); border:1px solid rgba(255,255,255,0.12); color:var(--white); width:36px; height:36px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:1rem; z-index:10; transition:all 0.2s; }
-    .carousel-btn:hover { background:rgba(232,146,42,0.3); border-color:var(--amber); }
-    .carousel-prev { left:0.8rem; }
-    .carousel-next { right:0.8rem; }
-    .carousel-dots { position:absolute; bottom:0.65rem; left:50%; transform:translateX(-50%); display:flex; gap:0.45rem; z-index:10; }
-    .carousel-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.3); border:none; cursor:pointer; padding:0; transition:background 0.2s; }
-    .carousel-dot.active { background:var(--amber); }
+    .modal-img-grid { display:grid; width:100%; gap:2px; }
+    .modal-img-grid.count-1 { grid-template-columns:1fr; min-height:420px; }
+    .modal-img-grid.count-2 { grid-template-columns:1fr 1fr; min-height:360px; }
+    .modal-img-grid.count-3 { grid-template-columns:1fr 1fr 1fr; min-height:300px; }
+    .modal-img-grid.count-many { grid-template-columns:repeat(3,1fr); min-height:300px; }
+    .modal-img-cell { overflow:hidden; cursor:zoom-in; position:relative; }
+    .modal-img-cell img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.3s; }
+    .modal-img-cell:hover img { transform:scale(1.04); }
+    .modal-img-cell-overlay { position:absolute; inset:0; background:rgba(0,0,0,0); transition:background 0.25s; display:flex; align-items:center; justify-content:center; }
+    .modal-img-cell:hover .modal-img-cell-overlay { background:rgba(232,146,42,0.1); }
+    .modal-img-cell-zoom { opacity:0; transition:opacity 0.25s; color:var(--white); }
+    .modal-img-cell:hover .modal-img-cell-zoom { opacity:1; }
  
     /* ═══ GALLERY MODAL ═══ */
     .gallery-overlay { position:fixed; inset:0; z-index:600; background:rgba(0,0,0,0.95); backdrop-filter:blur(12px); display:flex; align-items:center; justify-content:center; padding:2rem; opacity:0; pointer-events:none; transition:opacity 0.3s; }
@@ -1091,45 +1093,31 @@
   // Add your image paths or URLs here, e.g. 'images/photo1.jpg'
   const galleryImages = [];
  
-  /* ── Modal carousel state ── */
-  let carouselIdx = 0;
-  let carouselImages = [];
- 
   function renderModalImgSlot(images) {
     const slot = document.getElementById('modalImgSlot');
     if (!images || images.length === 0) {
+      slot.classList.add('empty');
       slot.innerHTML = `<div class="modal-img-placeholder">
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
         <span>Add your project images in the images:[] array</span>
       </div>`;
       return;
     }
-    carouselImages = images;
-    carouselIdx = 0;
-    const dotsHtml = images.length > 1
-      ? `<div class="carousel-dots">${images.map((_,i) => `<button class="carousel-dot${i===0?' active':''}" onclick="goCarousel(${i})"></button>`).join('')}</div>`
-      : '';
-    const navHtml = images.length > 1
-      ? `<button class="carousel-btn carousel-prev" onclick="stepCarousel(-1)">&#8249;</button>
-         <button class="carousel-btn carousel-next" onclick="stepCarousel(1)">&#8250;</button>`
-      : '';
-    slot.innerHTML = `<div class="modal-carousel">
-      <div class="modal-carousel-track" id="carouselTrack">
-        ${images.map(src => `<img src="${src}" alt="Project image"/>`).join('')}
-      </div>
-      ${navHtml}
-      ${dotsHtml}
+    slot.classList.remove('empty');
+    lightboxImages = images;
+    const countClass = images.length === 1 ? 'count-1' : images.length === 2 ? 'count-2' : images.length === 3 ? 'count-3' : 'count-many';
+    slot.innerHTML = `<div class="modal-img-grid ${countClass}">
+      ${images.map((src, i) => `
+        <div class="modal-img-cell" onclick="openLightbox(${i})">
+          <img src="${src}" alt="Project image ${i+1}"/>
+          <div class="modal-img-cell-overlay">
+            <span class="modal-img-cell-zoom">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            </span>
+          </div>
+        </div>`).join('')}
     </div>`;
   }
- 
-  function goCarousel(idx) {
-    carouselIdx = (idx + carouselImages.length) % carouselImages.length;
-    const track = document.getElementById('carouselTrack');
-    if (track) track.style.transform = `translateX(-${carouselIdx * 100}%)`;
-    document.querySelectorAll('.carousel-dot').forEach((d,i) => d.classList.toggle('active', i===carouselIdx));
-  }
- 
-  function stepCarousel(dir) { goCarousel(carouselIdx + dir); }
  
   function openModal(idx) {
     const p = projects[idx];
@@ -1210,3 +1198,4 @@
 </script>
 </body>
 </html>
+ 
