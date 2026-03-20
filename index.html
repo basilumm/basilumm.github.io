@@ -818,7 +818,7 @@
       <div class="contact-row">
         <button onclick="copyEmail(this)" class="btn btn-blue" style="cursor:pointer;border:none;">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-          <span id="emailBtnText"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="58353130393134763a39223134372e183f35393134763b3735">[email&#160;protected]</a></span>
+          <span id="emailBtnText">mihail.bazilov@gmail.com</span>
         </button>
         <a href="https://www.linkedin.com/in/m-bazilovs/" target="_blank" class="btn btn-outline">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 014 0v4M12 10v7"/></svg>
@@ -1031,10 +1031,11 @@
  
   /* ── Copy email ── */
   function copyEmail(btn) {
-    navigator.clipboard.writeText('mihail.bazilov@gmail.com').then(() => {
+    const email = 'mihail.bazilov@gmail.com';
+    navigator.clipboard.writeText(email).then(() => {
       const span = document.getElementById('emailBtnText');
       span.textContent = 'Copied to clipboard!';
-      setTimeout(() => { span.textContent = 'mihail.bazilov@gmail.com'; }, 2000);
+      setTimeout(() => { span.textContent = email; }, 2000);
     });
   }
  
@@ -1054,7 +1055,7 @@
       details:'I lead a multidisciplinary team of engineers, ensuring balanced tasks allocation, clear communication with client and amongst departments. I actively participated in designing the intial concept which was chosen as the design to develop. I designed a gearbox in order to utilize existing motors with low torque output which saved money on production. I created the detailed CAD design of the final product that was used in the presentation. ',
       tags:['3D printing','SolidWorks','Technical documentation','Team management'],
       images: ['mobiqube(pr).png',
-                'mobiqube(prot).png]
+                'mobiqube(prot).png']
     },
     {
       cat:'Physical system simulation', title:'Simulation of a projectile launched at an angle',
