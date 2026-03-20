@@ -280,11 +280,11 @@
     .modal-img-placeholder { display:flex; flex-direction:column; align-items:center; gap:0.8rem; color:var(--grey2); }
     .modal-img-placeholder span { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; }
     .modal-img-grid { display:grid; width:100%; gap:2px; }
-    .modal-img-grid.count-1 { grid-template-columns:1fr; min-height:420px; }
-    .modal-img-grid.count-2 { grid-template-columns:1fr 1fr; min-height:360px; }
-    .modal-img-grid.count-3 { grid-template-columns:1fr 1fr 1fr; min-height:300px; }
-    .modal-img-grid.count-many { grid-template-columns:repeat(3,1fr); min-height:300px; }
-    .modal-img-cell { overflow:hidden; cursor:zoom-in; position:relative; }
+    .modal-img-grid.count-1 { grid-template-columns:1fr; min-height:420px; max-height:1100px; }
+    .modal-img-grid.count-2 { grid-template-columns:1fr 1fr; min-height:360px; max-height:1050px; }
+    .modal-img-grid.count-3 { grid-template-columns:1fr 1fr 1fr; min-height:300px; max-height:1000px; }
+    .modal-img-grid.count-many { grid-template-columns:repeat(3,1fr); min-height:300px; max-height:1000px; }
+    .modal-img-cell { overflow:hidden; cursor:zoom-in; position:relative; max-height:inherit; }
     .modal-img-cell img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.3s; }
     .modal-img-cell:hover img { transform:scale(1.04); }
     .modal-img-cell-overlay { position:absolute; inset:0; background:rgba(0,0,0,0); transition:background 0.25s; display:flex; align-items:center; justify-content:center; }
@@ -1056,14 +1056,15 @@
       desc:'Design an autonomous mobility unit that is capable of driving a robotic arm on a preset route',
       details:'I lead a multidisciplinary team of engineers, ensuring balanced tasks allocation, clear communication with client and amongst departments. I actively participated in designing the intial concept which was chosen as the design to develop. I designed a gearbox in order to utilize existing motors with low torque output which saved money on production. I created the detailed CAD design of the final product that was used in the presentation. ',
       tags:['3D printing','SolidWorks','Technical documentation','Team management'],
-      images: ['mobiqube(pr).png']
+      images: ['mobiqube(pr).png',
+                'mobiqube(prot).png']
     },
     {
       cat:'Physical system simulation', title:'Simulation of a projectile launched at an angle',
       details:'Create a calculator that will receive custom initial conditions for a projectile and output critical values and plot the trajectory',
       desc:'I created a MATLAB script that uses simple equations in order to simulate a projectile launched at an angle. I implemented a possiblity for a user to input custom values for height, angle and launch speed in order to make the script perform more like a calculator. Additionally, I added a possibility to use mathematical functions in order to create a custom terrain and a plot function to show the trajectory and landing point.',
       tags:['MATLAB','Dynamics'],
-      images: ['MATLAB sim.png']
+      images: []
     },
     {
       cat:'Energy systems', title:'Mechanical battery design',
@@ -1077,16 +1078,14 @@
       desc:'Fully automate a part of a production line using a Programmable Logic Controller',
       details:'Using CODESYS I was able to fully automate a section of a production line that was meant to move blanks from a loading chamber to a pick-up zone where a robotic arm would pick those up and move to a drop-off zone. I also created a user interface where the user can start/stop the process and observe the state of the system and the amount of completed cycles',
       tags:['CODESYS','Logic circuits'],
-      images: ['PLC.gif']
+      images: []
     },
     {
       cat:'Water displacement system', title:'Windmill and a windmill powered pump',
       desc:'Design a windmill that is to be placed in a windtunnel and power a water pump to move water from one bucket to another. Manufacture the windmill using only available tools and materials.',
       details:'I conducted a thorough desk research to design windmill blades in order to achieve the highest efficiency. Using SolidWorks flow simulation I concluded that the design I came up with reduced wind sepparation area roughly 2 times compared to the design the team was initially going for. I also performed stress calculations to select the appropriate material for the main shaft. I manufactured the windmill blades and the stand using sheet metal and main hub using turning and milling. When all parts were done, I welded the stand into one piece and by means of the field research selected the most optimal angle of the blades.',
       tags:['CFD','SolidWorks','Stress analysis','Metalworking'],
-      images: ['pump.png',
-                'windmill_draw.png',
-                'real_wm.jpg']
+      images: []
     }
   ];
  
@@ -1199,4 +1198,3 @@
 </script>
 </body>
 </html>
- 
