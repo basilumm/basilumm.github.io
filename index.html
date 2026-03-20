@@ -280,12 +280,15 @@
     .modal-img-placeholder { display:flex; flex-direction:column; align-items:center; gap:0.8rem; color:var(--grey2); }
     .modal-img-placeholder span { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; }
     .modal-img-grid { display:grid; width:100%; gap:2px; }
-    .modal-img-grid.count-1 { grid-template-columns:1fr; min-height:420px; max-height:1100px; }
-    .modal-img-grid.count-2 { grid-template-columns:1fr 1fr; min-height:360px; max-height:1050px; }
-    .modal-img-grid.count-3 { grid-template-columns:1fr 1fr 1fr; min-height:300px; max-height:1000px; }
-    .modal-img-grid.count-many { grid-template-columns:repeat(3,1fr); min-height:300px; max-height:1000px; }
-    .modal-img-cell { overflow:hidden; cursor:zoom-in; position:relative; max-height:inherit; }
-    .modal-img-cell img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.3s; }
+    .modal-img-grid.count-1 { grid-template-columns:1fr; }
+    .modal-img-grid.count-2 { grid-template-columns:1fr 1fr; }
+    .modal-img-grid.count-3 { grid-template-columns:1fr 1fr 1fr; }
+    .modal-img-grid.count-many { grid-template-columns:repeat(3,1fr); }
+    .modal-img-cell { overflow:hidden; cursor:zoom-in; position:relative; height:420px; }
+    .modal-img-grid.count-2 .modal-img-cell { height:380px; }
+    .modal-img-grid.count-3 .modal-img-cell,
+    .modal-img-grid.count-many .modal-img-cell { height:340px; }
+    .modal-img-cell img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; transition:transform 0.3s; }
     .modal-img-cell:hover img { transform:scale(1.04); }
     .modal-img-cell-overlay { position:absolute; inset:0; background:rgba(0,0,0,0); transition:background 0.25s; display:flex; align-items:center; justify-content:center; }
     .modal-img-cell:hover .modal-img-cell-overlay { background:rgba(232,146,42,0.1); }
@@ -820,7 +823,7 @@
       <div class="contact-row">
         <button onclick="copyEmail(this)" class="btn btn-blue" style="cursor:pointer;border:none;">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-          <span id="emailBtnText">mihail.bazilov@gmail.com</span>
+          <span id="emailBtnText"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="365b5f5e575f5a1854574c5f5a594076515b575f5a1855595b">[email&#160;protected]</a></span>
         </button>
         <a href="https://www.linkedin.com/in/m-bazilovs/" target="_blank" class="btn btn-outline">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 014 0v4M12 10v7"/></svg>
@@ -841,7 +844,7 @@
  
 </div>
  
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   /* ── Flow field ── */
   (function() {
     const canvas = document.getElementById('flow-canvas');
@@ -1189,13 +1192,4 @@
     if (e.key === 'ArrowRight') { if (document.getElementById('lightbox').classList.contains('open')) stepLightbox(1); }
   });
   document.getElementById('modalClose').addEventListener('click', closeModal);
-  document.getElementById('modalOverlay').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
- 
-  function closeModal() {
-    document.getElementById('modalOverlay').classList.remove('open');
-    document.body.style.overflow = '';
-  }
- 
-</script>
-</body>
-</html>
+  document.getElementById('modalOverlay').addEventListene
