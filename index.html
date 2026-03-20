@@ -1192,4 +1192,13 @@
     if (e.key === 'ArrowRight') { if (document.getElementById('lightbox').classList.contains('open')) stepLightbox(1); }
   });
   document.getElementById('modalClose').addEventListener('click', closeModal);
-  document.getElementById('modalOverlay').addEventListene
+  document.getElementById('modalOverlay').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+ 
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+ 
+</script>
+</body>
+</html>
