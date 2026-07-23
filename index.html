@@ -554,7 +554,7 @@
     <div class="about-grid">
       <div class="about-text reveal">
         <p>I'm a <strong>Mechanical Engineering student</strong> at HAN University of Applied Sciences. Throughout my studies I was able to develop a strong <span class="hl-blue">theoretical foundation</span> and then use that for real-life projects gaining <span class="hl-blue">practical experience</span>.</p>
-        <p>Currently I'm leading a weapons systems sub-team in the university's Battle Bot project and working on a high-speed drone with a team of engineers. Both projects allow me to calculate, design, model, refine and manufacture which allows me to practice the skills that I enjoy working on the most.</p>
+        <p>I recently led a weapons systems sub-team in the university's Battle Bot project, and I'm currently working on a high-speed drone with a team of engineers. Both projects allowed me to calculate, design, model, refine and manufacture, letting me practice the skills that I enjoy working on the most.</p>
         <p>Outside of the studies, I'm interested in <span class="hl-orange">aerospace technologies</span>. The amount of engineering that goes into every aerospace project amazes me so I approach every project as if I was designing a <strong>A320</strong>.</p>
       </div>
       <div class="reveal d2">
@@ -579,27 +579,9 @@
     <h2 class="reveal">WHAT I'M WORKING <span class="accent">ON NOW</span></h2>
     <div class="live-badge reveal">
       <span class="live-dot"></span>
-      2 Active Projects
+      1 Active Project
     </div>
     <div class="current-grid reveal">
-      <div class="current-card">
-        <div class="cc-role">Lead Engineer — Weapons system Sub-team</div>
-        <div class="cc-title">Battle Bot Weapons System</div>
-        <div class="cc-org">University Student Competition Team · Ongoing</div>
-        <p class="cc-desc">Leading the development of a weapons system for the university's Battle bot team. Managing the work, communicating with clients in order to match the deadlines. Collaborating with the chassis and electrical sub-teams in order to deliver the design that is easy to implement and controll. Responsible for delivering a functional design and thorough documentation from conceptualizing to manufacturing and testing.</p>
-        <div class="cc-tags">
-          <span class="cc-tag">CAD (SolidWorks)</span>
-          <span class="cc-tag">FEA</span>
-          <span class="cc-tag">Material selection</span>
-          <span class="cc-tag">Lifespan analysis</span>
-          <span class="cc-tag">Stress analysis</span>
-          <span class="cc-tag">Manufacturing</span>
-          <span class="cc-tag">Metalworking</span>
-          <span class="cc-tag">Technical documentation</span>
-          <span class="cc-tag">Team leading</span>
-        </div>
-        <div class="cc-status"><span class="cc-status-dot"></span> In Development</div>
-      </div>
       <div class="current-card">
         <div class="cc-role">Mechanical Engineer — Engineering Team</div>
         <div class="cc-title">High-velocity drone</div>
@@ -702,6 +684,32 @@
         </div>
         <div class="proj-right">
           <button class="btn-details" onclick="openModal(5)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>Details</button>
+        </div>
+      </div>
+ 
+      <div class="proj-item">
+        <div class="proj-num-big">07</div>
+        <div class="proj-body">
+          <div class="proj-cat">Weapons system design</div>
+          <div class="proj-title">Battle Bot Weapons System</div>
+          <p class="proj-desc">Led the development of a weapons system for the university's Battle Bot team, managing the work and communicating with clients to match deadlines. Collaborated with the chassis and electrical sub-teams to deliver a design that was easy to implement and control. Created a thorough Excel spreadsheet used for manual stress calculations and material selection, and delivered a functional design with complete documentation from conceptualizing through manufacturing and testing.</p>
+          <div class="proj-tags"><span class="proj-tag">CAD (SolidWorks)</span><span class="proj-tag">FEA</span><span class="proj-tag">Material selection</span><span class="proj-tag">Lifespan analysis</span><span class="proj-tag">Stress analysis</span><span class="proj-tag">Manufacturing</span><span class="proj-tag">Metalworking</span><span class="proj-tag">Excel</span><span class="proj-tag">Technical documentation</span><span class="proj-tag">Team leading</span></div>
+        </div>
+        <div class="proj-right">
+          <button class="btn-details" onclick="openModal(6)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>Details</button>
+        </div>
+      </div>
+ 
+      <div class="proj-item">
+        <div class="proj-num-big">08</div>
+        <div class="proj-body">
+          <div class="proj-cat">Propulsion systems</div>
+          <div class="proj-title">GE90 Engine Flow &amp; Temperature Control Analysis</div>
+          <p class="proj-desc">Performed a flow analysis of a GE90 engine and designed a control system using a PI controller to regulate component temperature by tuning the fuel content in the air-fuel mixture.</p>
+          <div class="proj-tags"><span class="proj-tag">SolidWorks Flow Simulation</span><span class="proj-tag">MATLAB Simulink</span><span class="proj-tag">PI Control</span><span class="proj-tag">Thermal analysis</span></div>
+        </div>
+        <div class="proj-right">
+          <button class="btn-details" onclick="openModal(7)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>Details</button>
         </div>
       </div>
  
@@ -1091,6 +1099,22 @@
       images: ['pump.png',
               'windmill_draw.png',
               'real_wm.jpg']
+    },
+    {
+      cat:'Weapons system design', title:'Battle Bot Weapons System',
+      desc:'Led the development of a weapons system for the university\'s Battle Bot team, from concept to manufacturing and testing.',
+      details:'I led the development of a weapons system for the university\'s Battle Bot team, managing the workload and communicating with clients to match deadlines. I collaborated with the chassis and electrical sub-teams to deliver a design that was easy to implement and control. I created a thorough Excel spreadsheet that was used for manual stress calculations and material selection. I was responsible for delivering a functional design and thorough documentation, from conceptualizing through manufacturing and testing.',
+      tags:['CAD (SolidWorks)','FEA','Material selection','Lifespan analysis','Stress analysis','Manufacturing','Metalworking','Excel','Technical documentation','Team leading'],
+      // ↓ Add your image paths or URLs here, e.g. 'images/battlebot1.jpg'
+      images: []
+    },
+    {
+      cat:'Propulsion systems', title:'GE90 Engine Flow & Temperature Control Analysis',
+      desc:'Performed a flow analysis of a GE90 engine and designed a PI control system to regulate component temperature by tuning the air-fuel mixture.',
+      details:'I performed a flow analysis of a GE90 engine using SolidWorks Flow Simulation to understand the airflow and thermal behavior around the engine\'s components. Based on this analysis, I designed a control system using a PI controller to regulate the temperature of the components by tuning the fuel content in the air-fuel mixture. I modeled and tuned the control system in MATLAB Simulink to verify its performance and response.',
+      tags:['SolidWorks Flow Simulation','MATLAB Simulink','PI Control','Thermal analysis'],
+      // ↓ Add your image paths or URLs here, e.g. 'images/ge90_1.jpg'
+      images: []
     }
   ];
  
